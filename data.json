@@ -1,1 +1,1 @@
-{"users":[{"id":1,"name":"Kacper","money":950},{"id":2,"name":"Kamil","money":2150}],"products":[{"id":1,"name":"Table","price":400,"amount":12},{"id":2,"name":"Chair","price":250,"amount":17},{"id":3,"name":"Lamp","price":50,"amount":9}],"orders":[{"id":1,"productID":3,"userID":1},{"id":2,"productID":2,"userID":2}]}
+{"users":[{"id":1,"name":"Kacper","money":800}],"products":[{"id":1,"name":"Table","price":400,"amount":11},{"id":2,"name":"Chair","price":250,"amount":18}],"orders":[{"id":1,"productID":1,"userID":1}]}

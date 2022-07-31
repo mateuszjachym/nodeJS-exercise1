@@ -25,7 +25,7 @@ const createUser = ((req, res) => {
     }
     data.users.push(newUser)
     fs.writeFileSync("data.json", JSON.stringify(data));
-    res.status(201).json(newUser)
+    res.status(201).json(newUser);
 })
 
 const updateUser = ((req, res) => {
@@ -38,19 +38,18 @@ const updateUser = ((req, res) => {
     }
     data.users[index] = updatedUser
     fs.writeFileSync("data.json", JSON.stringify(data));
-    res.status(200).json('User updated')
+    res.status(200).json('User updated');
 })
 
 const deleteUser = ((req, res) => {
     const id = Number(req.params.userID)
     const index = data.users.findIndex(user => user.id === id)
     if (index === -1) {
-        return res.status(404).send('User not found')
+        return res.status(404).send('User not found');
     }
     for(let i = data.orders.length - 1; i >= 0; --i){
         if(data.orders[i].userID === id) {
             const productIndex = data.products.findIndex(product => product.id === data.orders[i].productID);
-            //data.products[product_index].amount = data.products[product_index].amount + 1;
             data.products[productIndex].amount += 1;
             data.orders.splice(i,1);
         }
