@@ -1,1 +1,1 @@
-{"users":[{"id":1,"name":"Kacper","money":800}],"products":[{"id":1,"name":"Table","price":400,"amount":11},{"id":2,"name":"Chair","price":250,"amount":18}],"orders":[{"id":1,"productID":1,"userID":1}]}
+{"users":[{"id":1,"name":"Kacper","money":1400}],"products":[{"id":1,"name":"Table","price":400,"amount":10}],"orders":[{"id":1,"productID":1,"userID":1},{"id":2,"productID":1,"userID":1}]}

@@ -1,17 +1,15 @@
-const data = require('../data.json')
-const fs = require('fs')
+const data = require('../data.json');
+const fs = require('fs');
 
 const getUsers = ((req, res) => {
-    res.json(data.users)
+    res.json(data.users);
 })
 
 const getUser = ((req, res) => {
-    const id = Number(req.params.userID)
-    const user = data.users.find(user => user.id === id)
-        if (!user) {
-        return res.status(404).send('User not found')
-    }
-    res.json(user)
+    const id = Number(req.params.userID);
+    const user = data.users.find(user => user.id === id);
+    if (!user) return res.status(404).send('User not found');
+    res.json(user);
 })
 
 const createUser = ((req, res) => {
@@ -23,30 +21,29 @@ const createUser = ((req, res) => {
         name: req.body.name,
         money: req.body.money
     }
-    data.users.push(newUser)
+    data.users.push(newUser);
     fs.writeFileSync("data.json", JSON.stringify(data));
     res.status(201).json(newUser);
 })
 
 const updateUser = ((req, res) => {
-    const id = Number(req.params.userID)
-    const index = data.users.findIndex(user => user.id === id)
+    const id = Number(req.params.userID);
+    const index = data.users.findIndex(user => user.id === id);
+    if (index === -1) return res.status(404).send('User not found');
     const updatedUser = {
         id: data.users[index].id,
         name: req.body.name,
         money: req.body.money
     }
-    data.users[index] = updatedUser
+    data.users[index] = updatedUser;
     fs.writeFileSync("data.json", JSON.stringify(data));
-    res.status(200).json('User updated');
+    res.status(201).json('User updated');
 })
 
 const deleteUser = ((req, res) => {
-    const id = Number(req.params.userID)
-    const index = data.users.findIndex(user => user.id === id)
-    if (index === -1) {
-        return res.status(404).send('User not found');
-    }
+    const id = Number(req.params.userID);
+    const index = data.users.findIndex(user => user.id === id);
+    if (index === -1) return res.status(404).send('User not found');
     for(let i = data.orders.length - 1; i >= 0; --i){
         if(data.orders[i].userID === id) {
             const productIndex = data.products.findIndex(product => product.id === data.orders[i].productID);

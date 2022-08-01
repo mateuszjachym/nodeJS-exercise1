@@ -17,9 +17,7 @@ const getOrders = ((req,res) => {
 const getOrder = ((req, res) => {
     const id = Number(req.params.orderID);
     const order = data.orders.find(order => order.id === id);
-        if (!order) {
-        return res.status(404).send('Order not found');
-    }
+    if (!order) return res.status(404).send('Order not found');
     res.json(order);
 })
 
@@ -44,16 +42,14 @@ const createOrder = ((req, res) => {
     data.users[indexUser].money -= data.products[indexProduct].price;
     data.products[indexProduct].amount -= 1;
     fs.writeFileSync("data.json", JSON.stringify(data));
-    res.status(201).json(newOrder);
+    res.status(201).json('Order created');
 })
 
 
 const deleteOrder = ((req, res) => {
     const id = Number(req.params.orderID);
     const index = data.orders.findIndex(order => order.id === id);
-        if (index === -1) {
-        return res.status(404).send('Order not found');
-    }
+    if (index === -1) return res.status(404).send('Order not found');
     const productID = data.orders[index].productID;
     const userID = data.orders[index].userID;
 
