@@ -1,1 +1,1 @@
-{"users":[{"id":1,"name":"Kacper","money":1400}],"products":[{"id":1,"name":"Table","price":400,"amount":10}],"orders":[{"id":1,"productID":1,"userID":1},{"id":2,"productID":1,"userID":1}]}
+{"users":[{"id":1,"name":"Kacper","money":1200}],"products":[{"id":1,"name":"Table","price":500,"amount":10}],"orders":[{"id":1,"productID":1,"userID":1}]}
